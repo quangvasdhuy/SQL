@@ -1,0 +1,60 @@
+/*
+CREATE DATABASE, TABLES AND INSERT SAMPLE DATA FOR STUDENT MANAGEMENT SYSTEM
+ */
+
+
+/* Create schema "student_cms_plusplus" */
+CREATE SCHEMA IF NOT EXISTS `student_cms_plusplus` DEFAULT CHARACTER SET utf8mb4 ;
+
+/* Use schema "student_cms_plusplus" */
+USE `student_cms_plusplus`;
+
+/* Create table "class" */
+CREATE TABLE IF NOT EXISTS `student_cms_plusplus`.`class` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `major` VARCHAR(45) NULL,
+  `total_student` INT NULL,
+  `teacher_name`  VARCHAR(45) NULL,
+  `teacher_phone` VARCHAR(10) NULL,
+  `created_timestamp` TIMESTAMP(6) NOT NULL DEFAULT current_timestamp(6),
+  `last_updated_timestamp` TIMESTAMP(6) NOT NULL DEFAULT current_timestamp(6),
+  PRIMARY KEY (`id`));
+
+/* Create table "student" */
+CREATE TABLE IF NOT EXISTS `student_cms_plusplus`.`student` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `mssv` INT NULL,
+  `password` VARCHAR(45) NULL,
+  `phone` VARCHAR(10) NULL,
+  `address` VARCHAR(45) NULL,
+  `age` INT NULL,
+  `email` VARCHAR(45) NULL,
+  `created_timestamp` TIMESTAMP(6) NOT NULL DEFAULT current_timestamp(6),
+  `last_updated_timestamp` TIMESTAMP(6) NOT NULL DEFAULT current_timestamp(6),
+  PRIMARY KEY (`id`));
+
+/* Create table "student_class" */
+CREATE TABLE IF NOT EXISTS `student_cms_plusplus`.`student_class` (
+  `student_id` INT NULL,
+  `class_id` INT NULL);
+
+/* Insert sample data for 3 tables: "student", "class", "student_class" */
+INSERT INTO `student_cms_plusplus`.`class` VALUES ('1', 'Java Fundamental', 'Java', '15', 'Nguyễn Văn A', '0912345678', now(), now());
+INSERT INTO `student_cms_plusplus`.`class` VALUES ('2', 'Java Backend', 'Java', '12', 'Trần Thị B', '0123456789', now(), now());
+INSERT INTO `student_cms_plusplus`.`class` VALUES ('3', 'Python Fundamental', 'Python', '16', 'Lê Văn C', '0916347533', now(), now());
+
+INSERT INTO `student_cms_plusplus`.`student` VALUES ('1', 'Lê Đoàn Quang Huy', '20150123', 'abcc32as', '0934829044', 'Bình Định', '19', 'ledoanquanghuy@gmail.com', now(), now());
+INSERT INTO `student_cms_plusplus`.`student` VALUES ('2', 'Đỗ Duy Anh', '20154231', '54fd5at7', '0831486527', 'Hà Nội', '23', 'duyanh@gmail.com', now(), now());
+INSERT INTO `student_cms_plusplus`.`student` VALUES ('3', 'Nguyễn Văn Phúc', '20162413', 'a5df9f43', '0723432178', 'Hà Nội', '22', 'phucng@gmail.com', now(), now());
+
+INSERT INTO `student_cms_plusplus`.`student_class` VALUES ('1', '1');
+INSERT INTO `student_cms_plusplus`.`student_class` VALUES ('2', '2');
+INSERT INTO `student_cms_plusplus`.`student_class` VALUES ('3', '3');
+
+/*
+SELECT * FROM student_cms_plusplus.class;
+SELECT * FROM student_cms_plusplus.student;
+SELECT * FROM student_cms_plusplus.student_class;
+*/
