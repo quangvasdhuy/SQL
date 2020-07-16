@@ -18,7 +18,7 @@ public class StatisticService {
     }
 
     public List<Statistic> getStatisticByMaker() {
-        String sql = "SELECT maker, sum(sold) AS sold, sum(price) AS totalMoney FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY sold DESC";
+        String sql = "SELECT maker, sum(sold) AS sold, sum(price*sold) AS totalMoney FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY sold DESC";
         return queryDatabaseStatistic(sql);
     }
 
